@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Customizer.unity
     guid: 69822abd823eb014bbb968baffcc8ae9
+  - enabled: 1
+    path: Assets/Scenes/OFL.unity
+    guid: cbabf481e858e484099b5b0fee72d80b
+  - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: 87af897d644b4494da1914c1fd4b0fa5
   m_configObjects: {}

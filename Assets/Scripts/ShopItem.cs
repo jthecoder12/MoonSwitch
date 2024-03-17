@@ -8,8 +8,7 @@ public class ShopItem
     private string type;
     private short price;
     private byte itemID;
-#nullable enable
-    private GameObject? itemImage;
+	private GameObject itemImage;
 
     public ShopItem(string itemName, string type, short price, byte itemID, GameObject itemImage)
     {
@@ -42,8 +41,11 @@ public class ShopItem
 
     public GameObject GetItemImage()
     {
-#pragma warning disable CS8603 // Possible null reference return.
         return itemImage;
-#pragma warning restore CS8603 // Possible null reference return.
     }
+
+	public void SetItemImage(GameObject itemImage)
+	{
+		this.itemImage = itemImage;
+	}
 }

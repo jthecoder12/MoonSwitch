@@ -343,6 +343,8 @@ RectTransform:
   - {fileID: 1349065892}
   - {fileID: 204485513}
   - {fileID: 1349829039}
+  - {fileID: 2030752367}
+  - {fileID: 503296034}
   m_Father: {fileID: 1854156205}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -423,11 +425,11 @@ MonoBehaviour:
   isMainSceneCamera: 0
   itemCode: 0
   moonRockField: {fileID: 542107957}
-  OFLScreen: {fileID: 0}
+  moonrockWarning: {fileID: 0}
   purchaseScreen: {fileID: 0}
   itemImage: {fileID: 0}
+  isEquipable: 0
   soccerBallImageRaw: {fileID: 0}
-  startBoostImageRaw: {fileID: 0}
   closeVariable: {fileID: 0}
   movementBall: {fileID: 0}
   directionBall: 0
@@ -791,6 +793,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490705928}
+  m_CullTransparentMesh: 1
+--- !u!1 &503296033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 503296034}
+  - component: {fileID: 503296036}
+  - component: {fileID: 503296035}
+  m_Layer: 5
+  m_Name: Info
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &503296034
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503296033}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 205092090}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 311.0194, y: -377}
+  m_SizeDelta: {x: 622.0388, y: 74.7134}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &503296035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503296033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2cbf94f0ab97802439b5a42b3af44eb2, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 100
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Items in gray have been bought.
+--- !u!222 &503296036
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503296033}
   m_CullTransparentMesh: 1
 --- !u!1 &542107956
 GameObject:
@@ -1562,11 +1644,11 @@ MonoBehaviour:
   isMainSceneCamera: 0
   itemCode: 0
   moonRockField: {fileID: 0}
-  OFLScreen: {fileID: 0}
+  moonrockWarning: {fileID: 0}
   purchaseScreen: {fileID: 0}
   itemImage: {fileID: 0}
+  isEquipable: 0
   soccerBallImageRaw: {fileID: 0}
-  startBoostImageRaw: {fileID: 0}
   closeVariable: {fileID: 0}
   movementBall: {fileID: 0}
   directionBall: 0
@@ -1622,7 +1704,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1349065893}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: BackToHome
+        m_MethodName: BackToHomeFromNonOriginalMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2496,11 +2578,11 @@ MonoBehaviour:
   isMainSceneCamera: 0
   itemCode: 0
   moonRockField: {fileID: 0}
-  OFLScreen: {fileID: 0}
+  moonrockWarning: {fileID: 0}
   purchaseScreen: {fileID: 0}
   itemImage: {fileID: 0}
+  isEquipable: 0
   soccerBallImageRaw: {fileID: 0}
-  startBoostImageRaw: {fileID: 0}
   closeVariable: {fileID: 0}
   movementBall: {fileID: 0}
   directionBall: 0
@@ -2586,7 +2668,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2741,11 +2823,11 @@ MonoBehaviour:
   isMainSceneCamera: 0
   itemCode: 0
   moonRockField: {fileID: 0}
-  OFLScreen: {fileID: 0}
+  moonrockWarning: {fileID: 0}
   purchaseScreen: {fileID: 0}
   itemImage: {fileID: 0}
+  isEquipable: 0
   soccerBallImageRaw: {fileID: 0}
-  startBoostImageRaw: {fileID: 0}
   closeVariable: {fileID: 1349829038}
   movementBall: {fileID: 0}
   directionBall: 0
@@ -2928,6 +3010,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892717007}
   m_CullTransparentMesh: 1
+--- !u!1 &2030752366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2030752367}
+  - component: {fileID: 2030752369}
+  - component: {fileID: 2030752368}
+  m_Layer: 5
+  m_Name: MoonrocksWarning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2030752367
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030752366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 205092090}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000005722, y: -125}
+  m_SizeDelta: {x: 800, y: 92.4438}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2030752368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030752366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2cbf94f0ab97802439b5a42b3af44eb2, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 100
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Not enough moonrocks.
+--- !u!222 &2030752369
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030752366}
+  m_CullTransparentMesh: 1
 --- !u!1 &2111952426
 GameObject:
   m_ObjectHideFlags: 0
@@ -3065,6 +3227,40 @@ PrefabInstance:
       propertyPath: purchaseScreen
       value: 
       objectReference: {fileID: 1349829038}
+    - target: {fileID: 4034223918870731755, guid: eddcb04e334f7244184e99174adc3fe2, type: 3}
+      propertyPath: moonrockWarning
+      value: 
+      objectReference: {fileID: 2030752366}
     m_RemovedComponents:
     - {fileID: -247655845887784595, guid: eddcb04e334f7244184e99174adc3fe2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eddcb04e334f7244184e99174adc3fe2, type: 3}
+--- !u!114 &4034223918668359778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4034223919056918356, guid: eddcb04e334f7244184e99174adc3fe2, type: 3}
+  m_PrefabInstance: {fileID: 4034223918668359777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4034223918668359779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4034223918870731753, guid: eddcb04e334f7244184e99174adc3fe2, type: 3}
+  m_PrefabInstance: {fileID: 4034223918668359777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4034223918668359780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4034223918668359779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a2898cc9024174bb780d74f36999ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 4034223918668359778}
+  soccerBallImage: {fileID: 4034223918870731753, guid: eddcb04e334f7244184e99174adc3fe2, type: 3}

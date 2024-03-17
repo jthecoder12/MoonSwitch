@@ -122,12 +122,21 @@ MonoBehaviour:
   isMainSceneCamera: 0
   itemCode: 10
   moonRockField: {fileID: 0}
-  OFLScreen: {fileID: 0}
+  moonrockWarning: {fileID: 0}
   purchaseScreen: {fileID: 0}
   itemImage: {fileID: 2800000, guid: af6a3be6e51c5ca45a0787bd3d829c02, type: 3}
+  equipText: {fileID: 0}
+  isEquipable: 1
   soccerBallImageRaw: {fileID: 4034223918870731753}
   closeVariable: {fileID: 0}
+  movementBall: {fileID: 0}
+  directionBall: 0
+  moveTimes: 0
+  pauseMenu: {fileID: 0}
+  loseScreen: {fileID: 0}
+  optionsMenu: {fileID: 0}
   soccerBall: {fileID: 0}
+  difficulty: 
 --- !u!114 &-247655845887784595
 MonoBehaviour:
   m_ObjectHideFlags: 0

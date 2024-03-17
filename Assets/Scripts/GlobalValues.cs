@@ -5,6 +5,7 @@ using UnityEngine;
 public class GlobalValues : MonoBehaviour
 {
     public short score = 0;
+	public static float musicPosition = 0;
 
     private void Awake()
     {

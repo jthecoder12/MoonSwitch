@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,8 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private InputField moonRockField;
 
-    [SerializeField]
-    private GameObject OFLScreen;
+	[SerializeField]
+	private GameObject moonrockWarning;
 
     [Header("Purchase management")]
     [SerializeField]
@@ -34,12 +33,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Texture itemImage;
 
-    [Header("Item Images")]
-    [SerializeField]
-    private GameObject soccerBallImageRaw;
+	public Text equipText;
 
-    [SerializeField]
-    private GameObject startBoostImageRaw;
+	public bool isEquipable = false;
+
+    [Header("Item Images")]
+    public GameObject soccerBallImageRaw;
 
     [Header("Game Object Configuration")]
     [SerializeField]
@@ -83,7 +82,6 @@ public class GameManager : MonoBehaviour
     public static List<byte> itemsBought = new List<byte>();
 
     private static GameObject soccerBallImage;
-    private static GameObject startBoostImage;
 
     private static byte currentEquipedBall;
 
@@ -92,7 +90,6 @@ public class GameManager : MonoBehaviour
     {
         // Set the static variable to the raw image
         soccerBallImage = soccerBallImageRaw;
-        startBoostImage = startBoostImageRaw;
 
         // Check equiped ball
         if(PlayerPrefs.HasKey("CurrentEquipedBall"))
@@ -132,6 +129,8 @@ public class GameManager : MonoBehaviour
             {
                 itemsBought.Add(System.Convert.ToByte(PlayerPrefs.GetInt($"BoughtItem_{i}")));
             }
+
+			itemsBought.Remove(0);
         }
 
         // Developer console things
@@ -145,12 +144,16 @@ public class GameManager : MonoBehaviour
     // Scene Button Methods
     public void PlayButton()
     {
-        SceneManager.LoadScene(1);
+		GlobalValues.musicPosition = 0;
+
+		SceneManager.LoadScene(1);
     }
 
     public void ShopButton()
     {
-        SceneManager.LoadScene(2);
+		GlobalValues.musicPosition = 0;
+
+		SceneManager.LoadScene(2);
     }
 
     // Developer console method
@@ -172,44 +175,62 @@ public class GameManager : MonoBehaviour
     // More button methods
     public void BackToHome()
     {
+		UpdateMusicTime();
+
         SceneManager.LoadScene(0);
     }
+
+	public void BackToHomeFromNonOriginalMusic()
+	{
+		Time.timeScale = 1;
+
+		GlobalValues.musicPosition = 0;
+
+		SceneManager.LoadScene(0);
+	}
 
     // Item engine (purchase/equip) also a button method
     public void MakePurchase()
     {
         // print($"Name: {items[itemCode].GetItemName()} Price: {items[itemCode].GetPrice()}");
-        try
-        {
-            // Check if we are actually trying to make a purchase
-            currentScore = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GlobalValues>().score;
-        } catch(System.NullReferenceException)
-        {
-            // This means we are trying to equip a ball
-            // print($"Equiping: Name: {items[itemCode].GetItemName()} Price: {items[itemCode].GetPrice()}");
-            PlayerPrefs.SetInt("CurrentEquipedBall", itemCode);
-            PlayerPrefs.Save();
+        // Check if we are actually trying to make a purchase
+		if(isEquipable)
+		{
+			// This means we are trying to equip a ball
+			print($"Equiping: Name: {items[itemCode].GetItemName()} Price: {items[itemCode].GetPrice()}");
+			equipText.gameObject.SetActive(true);
+			equipText.text = $"Equipped {items[itemCode].GetItemName()}";
+			PlayerPrefs.SetInt("CurrentEquipedBall", itemCode);
+			PlayerPrefs.Save();
 
-            return;
-        }
+			return;
+		} else
+		{
+			currentScore = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GlobalValues>().score;
 
-        if (currentScore >= items[itemCode].GetPrice())
-        {
-            purchaseScreen.SetActive(true);
-            GameObject.FindGameObjectWithTag("confirmMessage").GetComponent<Text>().text = $"Are you sure you want to buy {items[itemCode].GetItemName()}?";
-            GameObject.FindGameObjectWithTag("purchaseButton").GetComponent<GameManager>().itemCode = itemCode;
-            GameObject.FindGameObjectWithTag("purchaseButton").GetComponent<GameManager>().purchaseScreen = purchaseScreen;
-            GameObject.FindGameObjectWithTag("itemImage").GetComponent<RawImage>().texture = itemImage;
-        }
-        else
-        {
-            // print("Not enough moonrocks");
-        }
+			if (currentScore >= items[itemCode].GetPrice())
+			{
+				purchaseScreen.SetActive(true);
+				GameObject.FindGameObjectWithTag("confirmMessage").GetComponent<Text>().text = $"Are you sure you want to buy {items[itemCode].GetItemName()}?";
+				GameObject.FindGameObjectWithTag("purchaseButton").GetComponent<GameManager>().itemCode = itemCode;
+				GameObject.FindGameObjectWithTag("purchaseButton").GetComponent<GameManager>().purchaseScreen = purchaseScreen;
+				GameObject.FindGameObjectWithTag("itemImage").GetComponent<RawImage>().texture = itemImage;
+			}
+			else
+			{
+				// print("Not enough moonrocks");
+
+				moonrockWarning.SetActive(true);
+			}
+		}
     }
 
     // Set default ball
     public void SetDefaultBall()
     {
+		equipText.gameObject.SetActive(true);
+		equipText.text = "Equipped Default Ball";
+
         PlayerPrefs.SetInt("CurrentEquipedBall", 0);
         PlayerPrefs.Save();
     }
@@ -266,12 +287,14 @@ public class GameManager : MonoBehaviour
     // Even more button methods
     public void CreditsScreen()
     {
+		UpdateMusicTime();
         SceneManager.LoadScene(3);
     }
 
     public void ViewOFLScreen()
     {
-        OFLScreen.SetActive(true);
+		UpdateMusicTime();
+		SceneManager.LoadScene(5);
     }
 
     // Useful method
@@ -291,7 +314,6 @@ public class GameManager : MonoBehaviour
     {
         try {
             items.Add(0xA, new ShopItem("Soccer Ball", "Ball", 7, 0xA, soccerBallImage));
-            items.Add(0xB, new ShopItem("Start Boost", "Powerup", 10, 0xB, startBoostImage));
         } catch(System.ArgumentException){}
 
         for (byte i = 0; i < PlayerPrefs.GetInt("ItemsBoughtCount"); i++)
@@ -341,22 +363,28 @@ public class GameManager : MonoBehaviour
         } catch(MissingReferenceException) {}
     }
 
-    public void Options()
-    {
-        if (optionsMenu.active)
-        {
-            optionsMenu.SetActive(false);
-        }
-        else
-        {
-            optionsMenu.SetActive(true);
-        }
-    }
-
     public void SetDifficulty()
     {
         print(difficulty);
     }
+
+	public void TogglePause()
+	{
+		if(Time.timeScale == 1)
+		{
+			Time.timeScale = 0;
+		} else
+		{
+			pauseMenu.SetActive(false);
+			Time.timeScale = 1;
+		}
+	}
+
+	public void OpenInstructions()
+	{
+		UpdateMusicTime();
+		SceneManager.LoadScene(6);
+	}
 
     // Save the items that you have currently bought
     private static void SaveItemsBought(bool debug)
@@ -373,27 +401,36 @@ public class GameManager : MonoBehaviour
                 print(PlayerPrefs.GetInt($"BoughtItem_{i}"));
             }*/
         }
-    }
 
+    }
     private IEnumerator moveMobileTimes()
     {
         yield return new WaitForSeconds(0.05f);
         movementBall.moveMobile(directionBall);
     }
 
+	private void UpdateMusicTime()
+	{
+		GlobalValues.musicPosition = GameObject.FindGameObjectWithTag("MainCamera").
+			GetComponent<AudioSource>().time;
+	}
+
     private void Update()
     {
         if (CompareTag("MainCamera") && SceneManager.GetActiveScene().buildIndex == 1)
         {
             if (!loseScreen.active && Input.GetKeyDown(KeyCode.Escape))
+            if (!loseScreen.active && Input.GetKeyDown(KeyCode.Escape))
             {
                 if (pauseMenu.active)
                 {
                     pauseMenu.SetActive(false);
+					Time.timeScale = 1;
                 }
                 else
                 {
                     pauseMenu.SetActive(true);
+					Time.timeScale = 0;
                 }
             }
 
