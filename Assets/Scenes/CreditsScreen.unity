@@ -479,7 +479,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ecc855553ee40204f8d48d0fd78177bb, type: 3}
+    m_Font: {fileID: 12800000, guid: db4da55f21faf0843b8db582c34049c5, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -491,47 +491,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Shop Music:
-
-    BossaBossa by Kevin MacLeod | https://incompetech.com/
-
-    Music
-    promoted by https://www.chosic.com/free-music/all/
-
-    Creative Commons Creative
-    Commons: By Attribution 3.0 License
-
-    http://creativecommons.org/licenses/by/3.0/
-
-    TitleScreen/CreditsScreen:
-
-    Music:
-    Local Forecast - Slower by Kevin MacLeod
-
-    Free download: https://filmmusic.io/song/3988-local-forecast-slower
-
-    Licensed
-    under CC BY 4.0:
-
-    http://creativecommons.org/licenses/by/4.0
-
-    https://filmmusic.io/standard-license
-
-    Monkeys
-    Spinning Monkeys Kevin MacLeod (incompetech.com)
-
-    Licensed under Creative
-    Commons: By Attribution 3.0 License
-
-    http://creativecommons.org/licenses/by/3.0/
-
-    Music
-    promoted by https://www.chosic.com/free-music/all/
-
-
-    Game made by Joey
-
-'
+  m_Text: "Shop Music:\nBossaBossa by Kevin MacLeod | https://incompetech.com/\nMusic
+    promoted by https://www.chosic.com/free-music/all/\nCreative Commons Creative
+    Commons: By Attribution 3.0 License\nhttp://creativecommons.org/licenses/by/3.0/\nTitleScreen/CreditsScreen:\nMusic:
+    Local Forecast - Slower by Kevin MacLeod\nFree download: https://filmmusic.io/song/3988-local-forecast-slower\nLicensed
+    under CC BY 4.0:\nhttp://creativecommons.org/licenses/by/4.0\nhttps://filmmusic.io/standard-license\nMonkeys
+    Spinning Monkeys Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons:
+    By Attribution 3.0 License\nhttp://creativecommons.org/licenses/by/3.0/\nMusic
+    promoted by https://www.chosic.com/free-music/all/\n\nSome artwork from Wikimedia
+    Commons\u2122.\nInstructions made with draw.io/diagrams.net\n\nGame made by Joey\n"
 --- !u!222 &593721942
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -600,9 +568,9 @@ MonoBehaviour:
   moonrockWarning: {fileID: 0}
   purchaseScreen: {fileID: 0}
   itemImage: {fileID: 0}
+  equipText: {fileID: 0}
   isEquipable: 0
   soccerBallImageRaw: {fileID: 0}
-  startBoostImageRaw: {fileID: 0}
   closeVariable: {fileID: 0}
   movementBall: {fileID: 0}
   directionBall: 0
@@ -610,6 +578,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   loseScreen: {fileID: 0}
   optionsMenu: {fileID: 0}
+  lavas: []
   soccerBall: {fileID: 0}
   difficulty: 
 --- !u!114 &618405051
@@ -766,9 +735,9 @@ MonoBehaviour:
   moonrockWarning: {fileID: 0}
   purchaseScreen: {fileID: 0}
   itemImage: {fileID: 0}
+  equipText: {fileID: 0}
   isEquipable: 0
   soccerBallImageRaw: {fileID: 0}
-  startBoostImageRaw: {fileID: 0}
   closeVariable: {fileID: 0}
   movementBall: {fileID: 0}
   directionBall: 0
@@ -776,6 +745,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   loseScreen: {fileID: 0}
   optionsMenu: {fileID: 0}
+  lavas: []
   soccerBall: {fileID: 0}
   difficulty: 
 --- !u!114 &809170692

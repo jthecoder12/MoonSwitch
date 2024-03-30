@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShootDestroyer : MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class ShootDestroyer : MonoBehaviour
     [SerializeField]
     private float speed;
 
+	[SerializeField]
+	private Image shootButton;
+
     private Transform newDestroyer;
+
+	private bool cooldownActive = false;
 
     // Update is called once per frame
     void Update()
@@ -29,9 +35,13 @@ public class ShootDestroyer : MonoBehaviour
     }
 
     public void Shoot()
-    {
-        newDestroyer = Instantiate(destroyer, transform.position + Vector3.up * 0.5f, destroyer.transform.rotation).GetComponent<Transform>();
-        Invoke("DestroyDestroyer", 5);
+	{
+		if(!cooldownActive)
+		{
+			newDestroyer = Instantiate(destroyer, transform.position + Vector3.up * 0.5f, destroyer.transform.rotation).GetComponent<Transform>();
+			StartCoroutine(Cooldown());
+			Invoke("DestroyDestroyer", 5);
+		}
     }
 
     private void DestroyDestroyer()
@@ -41,4 +51,13 @@ public class ShootDestroyer : MonoBehaviour
             Destroy(newDestroyer.gameObject);
         } catch(MissingReferenceException) {}
     }
+
+	private IEnumerator Cooldown()
+	{
+		cooldownActive = true;
+		shootButton.color = Color.red;
+		yield return new WaitForSeconds(1);
+		cooldownActive = false;
+		shootButton.color = Color.white;
+	}
 }

@@ -26,5 +26,7 @@ public class DeathScreen : MonoBehaviour
         {
             distanceLabel.color = Color.red;
         }
+
+		GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MoonRockScript>().enabled = false;
     }
 }

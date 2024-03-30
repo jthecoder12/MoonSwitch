@@ -212,8 +212,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_SizeDelta: {x: 0, y: -0.00012207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1000711872
 MonoBehaviour:
@@ -236,12 +236,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: db4da55f21faf0843b8db582c34049c5, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 115
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -480,9 +480,9 @@ MonoBehaviour:
   moonrockWarning: {fileID: 0}
   purchaseScreen: {fileID: 0}
   itemImage: {fileID: 0}
+  equipText: {fileID: 0}
   isEquipable: 0
   soccerBallImageRaw: {fileID: 0}
-  startBoostImageRaw: {fileID: 0}
   closeVariable: {fileID: 0}
   movementBall: {fileID: 0}
   directionBall: 0
@@ -490,6 +490,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   loseScreen: {fileID: 0}
   optionsMenu: {fileID: 0}
+  lavas: []
   soccerBall: {fileID: 0}
   difficulty: 
 --- !u!114 &1347082881

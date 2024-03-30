@@ -62,6 +62,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject optionsMenu;
 
+	[SerializeField]
+	private Lava[] lavas;
+
     [Header("Ball configuration")]
     [SerializeField]
     private GameObject soccerBall;
@@ -146,6 +149,11 @@ public class GameManager : MonoBehaviour
     {
 		GlobalValues.musicPosition = 0;
 
+		if(SceneManager.GetActiveScene().buildIndex == 1)
+		{
+			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MoonRockScript>().enabled = true;
+		}
+
 		SceneManager.LoadScene(1);
     }
 
@@ -177,7 +185,12 @@ public class GameManager : MonoBehaviour
     {
 		UpdateMusicTime();
 
-        SceneManager.LoadScene(0);
+		if (SceneManager.GetActiveScene().buildIndex == 1)
+		{
+			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MoonRockScript>().enabled = true;
+		}
+
+		SceneManager.LoadScene(0);
     }
 
 	public void BackToHomeFromNonOriginalMusic()
@@ -370,13 +383,22 @@ public class GameManager : MonoBehaviour
 
 	public void TogglePause()
 	{
-		if(Time.timeScale == 1)
+		if(!loseScreen.active)
 		{
-			Time.timeScale = 0;
-		} else
-		{
-			pauseMenu.SetActive(false);
-			Time.timeScale = 1;
+			if (Time.timeScale == 1)
+			{
+				pauseMenu.SetActive(true);
+				GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MoonRockScript>().enabled = false;
+				Time.timeScale = 0;
+				DisableLava();
+			}
+			else
+			{
+				pauseMenu.SetActive(false);
+				GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MoonRockScript>().enabled = true;
+				Time.timeScale = 1;
+				EnableLava();
+			}
 		}
 	}
 
@@ -420,24 +442,38 @@ public class GameManager : MonoBehaviour
         if (CompareTag("MainCamera") && SceneManager.GetActiveScene().buildIndex == 1)
         {
             if (!loseScreen.active && Input.GetKeyDown(KeyCode.Escape))
-            if (!loseScreen.active && Input.GetKeyDown(KeyCode.Escape))
             {
                 if (pauseMenu.active)
                 {
                     pauseMenu.SetActive(false);
+					GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MoonRockScript>().enabled = true;
 					Time.timeScale = 1;
+					EnableLava();
                 }
                 else
                 {
                     pauseMenu.SetActive(true);
+					GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MoonRockScript>().enabled = false;
 					Time.timeScale = 0;
+					DisableLava();
                 }
-            }
-
-            if (loseScreen.active)
-            {
-                pauseMenu.SetActive(false);
             }
         }
     }
+
+	private void DisableLava()
+	{
+		foreach (Lava lava in lavas)
+		{
+			lava.SetEnabled(false);
+		}
+	}
+
+	private void EnableLava()
+	{
+		foreach (Lava lava in lavas)
+		{
+			lava.SetEnabled(true);
+		}
+	}
 }

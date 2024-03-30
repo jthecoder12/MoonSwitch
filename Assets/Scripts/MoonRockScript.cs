@@ -9,6 +9,7 @@ public class MoonRockScript : MonoBehaviour
 
     private bool spawnStarted;
 
+
     // Update is called once per frame
     void Update()
     {
