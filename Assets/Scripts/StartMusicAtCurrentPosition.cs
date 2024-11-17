@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// An entire script just to play the title screen music at the same position it was when you were in the other scene
 public class StartMusicAtCurrentPosition : MonoBehaviour
 {
     // Start is called before the first frame update

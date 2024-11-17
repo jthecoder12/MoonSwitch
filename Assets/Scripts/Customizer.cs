@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Professional looking code
 public class Customizer : MonoBehaviour
 {
     [SerializeField]

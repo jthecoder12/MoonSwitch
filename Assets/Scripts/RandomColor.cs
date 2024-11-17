@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+// Picks a random color
 public class RandomColor : MonoBehaviour
 {
     [SerializeField]

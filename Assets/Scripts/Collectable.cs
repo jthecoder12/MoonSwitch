@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Moon rock item script
 public class Collectable : MonoBehaviour
 {
     private Text counterText;

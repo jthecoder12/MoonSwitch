@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// The moving platforms
 public class MovePlatform : MonoBehaviour
 {
     [SerializeField]

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Lava script
 public class Lava : MonoBehaviour
 {
     [SerializeField]

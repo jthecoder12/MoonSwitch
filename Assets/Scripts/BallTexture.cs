@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Most simple script in the entire game
 public class BallTexture : MonoBehaviour
 {
     void Update()

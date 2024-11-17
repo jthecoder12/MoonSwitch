@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Spawns moon rocks
 public class MoonRockScript : MonoBehaviour
 {
     [SerializeField]

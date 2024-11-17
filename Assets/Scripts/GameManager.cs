@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// Most complicated class in the entire game
 public class GameManager : MonoBehaviour
 {
     // Variables
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     private static byte currentEquipedBall;
 
-    // Do stuff in the beginning;
+    // Do stuff in the beginning
     private void Start()
     {
         // Set the static variable to the raw image
@@ -157,6 +158,7 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene(1);
     }
 
+    // Name is obvious
     public void ShopButton()
     {
 		GlobalValues.musicPosition = 0;
@@ -193,6 +195,7 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene(0);
     }
 
+    // Best function name ever
 	public void BackToHomeFromNonOriginalMusic()
 	{
 		Time.timeScale = 1;
@@ -376,14 +379,16 @@ public class GameManager : MonoBehaviour
         } catch(MissingReferenceException) {}
     }
 
+    // For a future update
     public void SetDifficulty()
     {
         print(difficulty);
     }
 
+    // Name is obvious
 	public void TogglePause()
 	{
-		if(!loseScreen.active)
+		if(!loseScreen.activeInHierarchy)
 		{
 			if (Time.timeScale == 1)
 			{
@@ -441,9 +446,9 @@ public class GameManager : MonoBehaviour
     {
         if (CompareTag("MainCamera") && SceneManager.GetActiveScene().buildIndex == 1)
         {
-            if (!loseScreen.active && Input.GetKeyDown(KeyCode.Escape))
+            if (!loseScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
             {
-                if (pauseMenu.active)
+                if (pauseMenu.activeInHierarchy)
                 {
                     pauseMenu.SetActive(false);
 					GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MoonRockScript>().enabled = true;
