@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// I forgot
 public class CheckItemBought : MonoBehaviour
 {
 	[SerializeField]

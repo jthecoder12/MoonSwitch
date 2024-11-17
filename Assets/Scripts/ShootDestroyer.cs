@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// Shoots the destroyer
 public class ShootDestroyer : MonoBehaviour
 {
     [SerializeField]

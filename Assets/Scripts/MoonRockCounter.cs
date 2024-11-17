@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// The counter for the moon rocks
 public class MoonRockCounter : MonoBehaviour
 {
     private void Awake()

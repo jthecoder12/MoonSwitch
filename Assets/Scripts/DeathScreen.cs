@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+// The death screen script
 public class DeathScreen : MonoBehaviour
 {
     [SerializeField]

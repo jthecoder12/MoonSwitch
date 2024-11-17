@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Name is obvious
 public class Movement : MonoBehaviour
 {
     [Header("Ball configuration")]
@@ -50,36 +51,38 @@ public class Movement : MonoBehaviour
             distanceCounter.color = Color.white;
         }
 
-        if (Input.GetMouseButton(0))
-        {
-            StartCoroutine(moveX());
-        } else
-        {
-            StopAllCoroutines();
-        }
+        if(Time.timeScale == 1) {
+            if (Input.GetMouseButton(0))
+            {
+                StartCoroutine(moveX());
+            } else
+            {
+                StopAllCoroutines();
+            }
 
-        if(Input.GetMouseButtonUp(0))
-        {
-            //print("Up");
-            GetComponent<AudioSource>().Stop();
-            StopAllCoroutines();
-        }
+            if(Input.GetMouseButtonUp(0))
+            {
+                //print("Up");
+                GetComponent<AudioSource>().Stop();
+                StopAllCoroutines();
+            }
 
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            moveMobile(-1);
-        } else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            moveMobile(1);
-        } else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            moveDown();
+            if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            {
+                moveMobile(-1);
+            } else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                moveMobile(1);
+            } else if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            {
+                moveDown();
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        if(!MouseOverConfiguration.isOver && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)))
+        if(!MouseOverConfiguration.isOver && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && Time.timeScale == 1)
         { 
             if (rb.velocity.y < maxForce)
             {
@@ -115,15 +118,18 @@ public class Movement : MonoBehaviour
 
     public void moveMobile(short direction)
     {
+        if(Time.timeScale == 1) {
         try
         {
             transform.position += new Vector3(direction * movementForce, 0, 0);
         }
         catch (MissingReferenceException) {}
+        }
+        
     }
 
     public void moveDown()
     {
-        transform.position -= new Vector3(0, 0.05f, 0);
+        if(Time.timeScale == 1) transform.position -= new Vector3(0, 0.05f, 0);
     }
 }

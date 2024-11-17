@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Dev console. Press Z and M together at the same time in varius places such as the shop to open.
 public class DevConsole : MonoBehaviour
 {
     [SerializeField]
@@ -24,11 +25,12 @@ public class DevConsole : MonoBehaviour
             }
         }
 
+
         if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.RightShift) && Input.GetKeyDown(KeyCode.Q))
         {
             if(easterEgg is not null)
             {
-                if(easterEgg.active)
+                if(easterEgg.activeInHierarchy)
                 {
                     easterEgg.SetActive(false);
                 }

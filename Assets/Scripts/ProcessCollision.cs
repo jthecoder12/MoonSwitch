@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Probably the second most complicated script in the game
 public class ProcessCollision : MonoBehaviour
 {
     public bool isEnabled = true;

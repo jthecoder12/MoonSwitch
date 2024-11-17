@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// The shop is the most complicated part of the entire game
 public class ShopItem
 {
     private string itemName;
